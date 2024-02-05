@@ -1,0 +1,143 @@
+[
+  {
+    "id":[1],
+    "ques": [  
+      "Which is not a new feature that is introduced in ES6?"
+    ],
+    "option": [
+      {
+        "id":1,
+        "name":"Arrow functions"
+      },
+      {
+        "id":2,
+        "name":"Date.now()"
+      },
+      {
+        "id":3,
+        "name":"Const"
+      },
+      {
+        "id":4,
+        "name":"Promises"
+      }
+    ],
+    "answerdesc": [
+        "Date.now() is an ES5 feature."    
+      ],
+    "answer":[2]
+  },
+  {
+    "id":[2],
+    "ques": [  
+      "When was Vue.js launched?"
+    ],
+    "option": [
+      {
+        "id":1,
+        "name":"2014"
+      },
+      {
+        "id":2,
+        "name":"2012"
+      },
+      {
+        "id":3,
+        "name":"2010"
+      },
+      {
+        "id":4,
+        "name":"2008"
+      }
+    ],
+    "answerdesc": [
+      "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You, and released in the year 2014."    
+      ],
+      "answer":[1]
+  },
+  {
+    "id":[3],
+    "ques": [  
+      "Which of these is not a lifecycle of Vue?"
+    ],
+    "option": [
+      {
+        "id":1,
+        "name":"Created"
+      },
+      {
+        "id":2,
+        "name":"Mounted"
+      },
+      {
+        "id":3,
+        "name": "Ended"
+      },
+      {
+        "id":4,
+        "name": "Updated"
+      }
+    ],
+    "answerdesc": [
+      "Before create,Created,Before mount,Mounted,Before update,Updated,Before destroy and Destroyed are the lifecycles of vue."    
+      ],
+      "answer":[3]
+  },
+  {
+    "id":[4],
+    "ques": [  
+      "Which of these is a block element of HTML?"
+    ],
+    "option": [
+      {
+        "id":1,
+        "name":"img tag"
+      },
+      {
+        "id":2,
+        "name":"anchor tag"
+      },
+      {
+        "id":3,
+        "name":"p tag"
+      },
+      {
+        "id":4,
+        "name":"span"
+      }
+    ],
+    "answerdesc": [
+      "Block level elements take up as much space as possible by default. p,div,ol,ul are block elements."     
+      ],
+      "answer":[3]
+  },
+  {
+    "id":[5],
+    "ques": [  
+      "Inside which HTML element do we put the JavaScript?"
+    ],
+    "option": [
+      {
+        "id":1,
+        "name":"js"
+      },
+      {
+        "id":2,
+        "name":"scripting"
+      },
+      {
+        "id":3,
+        "name":"jsscript"
+      },
+      {
+        "id":4,
+        "name":"script"
+      }
+    ],
+    "answerdesc": [
+      "Javascript is called in the src attribute of the script tag."     
+      ],
+      "answer":[4]
+  }
+
+]

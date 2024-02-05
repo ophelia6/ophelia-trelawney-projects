@@ -1,0 +1,3 @@
+git branch -M main
+git commit -m "program file"
+git push -uf origin main

@@ -1,0 +1,81 @@
+{
+    "quiz1": [
+      {
+        "ques": [  
+          "Which is not a new feature that is introduced in ES6?"
+        ],
+        "option": [
+          "Arrow functions",
+          "Date.now()",
+          "Const",
+          "Promises"
+        ],
+        "answer": [
+            "Date.now() is an ES5 feature."    
+          ]
+      }
+    ],
+    "quiz2": [
+      {
+        "ques": [  
+          "When was Vue.js launched?"
+        ],
+        "option": [
+          "2014",
+          "2012",
+          "2010",
+          "2008"
+        ],
+        "answer": [
+            "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You, and released in the year 2014." ]
+      }
+    ],
+    "quiz3": [
+      {
+        "ques": [  
+          "Which of these is not a lifecycle of Vue?"
+        ],
+        "option": [
+          "Created",
+          "Mounted",
+          "Ended",
+          "Updated"
+        ],
+        "answer": [
+            "Before create,Created,Before mount,Mounted,Before update,Updated,Before destroy and Destroyed are the lifecycles of vue."    
+          ]
+      }
+    ],
+    "quiz4": [
+      {
+        "ques": [  
+          "Which of these is a block element of HTML?"
+        ],
+        "option": [
+          "img tag",
+          "anchor tag",
+          "p tag",
+          "span"
+        ],
+        "answer": [
+            "Block level elements take up as much space as possible by default. p,div,ol,ul are block elements."    
+          ]
+      }
+    ],"quiz5": [
+      {
+        "ques": [  
+          "Inside which HTML element do we put the JavaScript?"
+        ],
+        "option": [
+          "js",
+          "scripting",
+          "jsscript",
+          "script"
+        ],
+        "answer": [
+            "Javascript is called in the src attribute of the script tag."    
+          ]
+      }
+    ]
+  }
+

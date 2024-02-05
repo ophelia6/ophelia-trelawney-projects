@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Stopwatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      *{padding: 0;margin: 0;box-sizing: border-box;}
+       html,body{height: 100%;background: #000;color:#fff;font-family: verdana;font-size: 15px;}
+      .btn{cursor: pointer;}
+      .double{display: none;}
+      #root{display: flex;height: 100%;align-items: center;justify-content: center;}
+      .watch-wrap{display: flex;font-size: 60px;}
+      .active .start{display: none;}
+      .start{width: 80px;
+    height: 80px;line-height: 80px;text-align: center;border-radius: 50%;border: 1px solid 	#32CD32;color: 	#32CD32;}
+      .stop{display: none;width: 80px;
+    height: 80px;line-height: 80px;text-align: center;border-radius: 50%;border: 1px solid #CD5C5C;color: #CD5C5C;}
+    .reset{width: 80px;
+    height: 80px;line-height: 80px;text-align: center;border-radius: 50%;border: 1px solid 	#32CD32;color: 	#32CD32;}
+      .active .stop{display: block;}
+      .btn-wrap{display: flex;justify-content: space-between;margin-top: 30px;}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/jsx" src="all.js"></script>
+
+</body>
+</html>

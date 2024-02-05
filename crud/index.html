@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CURD</title>
+    <style type="text/css">
+    *{margin: 0;padding: 0;box-sizing: border-box;font-family: Arial, Helvetica, sans-serif;}
+    .wrapper{padding: 20px;display: flex;justify-content: space-between;flex-wrap: wrap;}
+    .form-wrap{width: 30%;max-width: 30%;}
+    .title{font-size: 18px;line-height: 22px;padding-bottom: 10px;color:#34495e;text-align: center;}
+    form input{display: block;margin: 10px auto 0;padding: 10px;}
+   .table-wrap{width: 70%;max-width: 70%;margin-top: 10px;}
+   table{border-collapse: collapse;width: 100%;}
+   td,th {border: 1px solid #ddd;padding: 8px;text-align: left;font-size: 14px;
+    line-height: 19px;word-wrap: break-word;width: 400px;}
+   th{background:#34495e;color: #fff;}
+    .submit{background:#34495e;height: 30px;line-height: 30px;border-radius: 5px;cursor: pointer;text-transform: uppercase;font-size: 14px;color: #fff;outline: 0;border: none;display: block; margin-top: 10px;width: 100px;padding: 0;}
+    .update{cursor: pointer;display: none;background:#ff0000;height: 30px;line-height: 30px;width: 100px;border-radius: 5px;text-transform: uppercase;font-size: 14px;color: #fff;margin: 10px auto 0;text-align: center;}
+    .edit,.delete{cursor: pointer;}
+    .delete .del-img{background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABmJLR0QA/wD/AP+gvaeTAAABjklEQVRoge2asU7DQAyGvwILC2WFJ6IMZYcnYeAJeQSkVhSCFKbSqUMRDEmRqCCKfXd2Cv4kq5P7+5dzce4SCIIgCDq5Al6BGpg612JCBXy08WwtPrIWpDHqVsNBYv6U7x3rE7tIciucl0H9Q1GlozZxBlwCcwND0pgDkxKGFwMw91v0vvmlruE/zQSY4d/N3ZgBFwV9B0EwIDSPdUtgnLsQJW/AqSRBM5YWipxSPEoT9t2wuJYw3IMnRU4pxLVEh0uIFMTEsPjOWBBxLZo5fAisgSNFbk42wHH72xtNh9+BF0VebiqEZkG/Hx7COlbVEIZLimXG1PAQHj5UNUSHezKEWayqQfua44RmL+rJGFhJk7QdXuFreInCLKSdS3uuY7V2GLYQzYCLYc9ZrNaODgvwnMVq7X/X4ZTvK7wOAlQb/y0pHfY6CFBt/LekvhD3uKyTNMOwpbiHZqrhh8T8fdH84pzm5mX1PccGODNx1sEddoZvjTx1MgJugHuauZzb5Lr972srQ0EQBEEQlOETsl9ANjYifHAAAAAASUVORK5CYII=') center no-repeat;background-size: contain;width: 30px;height: 30px;}
+    .edit .edit-img{background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAA9UlEQVRoge3YQQrCMBBA0X8nhXoQwXP0BO0dew6lOwUXuojBmmaiBclkYD50o1m8iU1RwfO8luqBCzABe2XL5kbgsbhm4KAq2lCKNzWEhDcxRA5/y7w2A52SUSyHj1DpvWYOdglfWjPVZeaT7vkhWdcB12TNuR4zX+nA3oHTa11H+ETSNX1l70ffnjZxiIE8fqxPfifd8wMB/W2wJvHxwB4pD5Gejar98rSBgDS387Ed4QucyZ13/L9zvFaO18rxWjleK8dr5XitHK+ZaTysUSle+utD9WfgshS2rOmdj0kDmMDDGli6msODcTwYx4NxvOd5Xp2etIWWKyk1R5MAAAAASUVORK5CYII=') center no-repeat;background-size: contain;width: 30px;height: 30px;}
+
+    @media screen and (max-width: 799px) {
+        .form-wrap{width: 100%;max-width: 100%;}
+   .table-wrap{width: 100%;max-width: 100%;margin-top: 30px;}
+
+    }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="form-wrap">
+<div class="title">Please fill the form.</div>
+<form method="Post" onsubmit="return setData();">
+    <input type="text" class="fname" name="fname" placeholder="Name">
+    <input type="text" class="fnum" name="fnum" placeholder="Number">
+    <input type="text" class="fmail" name="fmail" placeholder="Email">
+    <input type="submit" value="Submit" class="submit">
+    <div class="update" onclick="updateData(this.id)">Update</div>
+</form>
+</div>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody id="table-wrap">
+        </tbody>
+    </table>
+</div>
+</div>
+<script type="text/javascript">
+class CommonProp{
+    getEL(el){
+        return document.querySelector(el); 
+    }
+}
+class FormData extends CommonProp {
+constructor(name,mobile,email){
+    super();
+    this.data = JSON.parse(localStorage.getItem("dataValue")) || [];
+    this.name = name;
+    this.mobile = mobile;
+    this.email = email;
+}
+create() {		   
+    let newItem = {
+      name: this.name,
+      mobile: this.mobile,
+      email: this.email
+    };
+    this.data.push((newItem));
+    localStorage.setItem("dataValue", JSON.stringify(this.data));
+   
+  }
+  update(id){
+    this.data[id].name = this.name;
+    this.data[id].email = this.email;
+    this.data[id].mobile = this.mobile;
+    localStorage.setItem("dataValue", JSON.stringify(this.data));
+    this.getEL('.update').style.display = "none"; 
+    this.getEL('.submit').style.display = "block";
+    CommonData.getEL('.fname').value = '';
+    this.email = '';
+    this.mobile = '';
+    this.render();
+  }
+  delete(id){
+        this.data.splice(id,1);
+        localStorage.setItem("dataValue", JSON.stringify(this.data));
+        this.render();
+  }
+  edit(id){
+    this.getEL('.fname').value = this.data[id].name;
+    this.getEL('.fmail').value = this.data[id].email;
+    this.getEL('.fnum').value = this.data[id].mobile;
+    this.getEL('.submit').style.display = "none"; 
+    this.getEL('.update').id = id;
+    this.getEL('.update').style.display = "block";
+  }
+render(){
+    const renderData = `
+            ${this.data.map( (val, index) =>`
+                <tr>
+                    <td>${val.name}	</td>
+                    <td>${val.mobile}</td>
+                    <td>${val.email}</td>
+                    <td id=${index} class="delete" onClick="deleteData(this.id)"><div class="del-img"></td>
+                    <td id=${index} class="edit" onClick="editData(this.id)"><div class="edit-img"></div></td>
+                </tr>           
+            `).join('')}
+    `;
+    const renEle = this.getEL('#table-wrap');
+    renEle.innerHTML =  renderData;
+}
+}
+const isRequired = value => value === '' ? false : true;
+const validateEmail = mail => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) ? true : false;
+const validatePhone = phone => phone.match(/^\d{10}$/) ? true : false;
+   
+
+const setData = (data) => {
+    const CommonData = new CommonProp();
+    const name = CommonData.getEL('.fname').value;
+    const num = CommonData.getEL('.fnum').value;
+    const email = CommonData.getEL('.fmail').value;
+    const FormDataValues = new FormData(name, num, email);
+    if(isRequired(name) == false){
+        alert("Please enter name")
+    }
+    else if(isRequired(num) == false || validatePhone(num) == false){
+        alert("Please enter valid num")
+    }
+    else if(isRequired(email) == false || validateEmail(email) == false){
+        alert("Please enter valid email")
+    }
+    else{
+        FormDataValues.create();
+    }
+    
+}
+const getData = () => {
+    const RenderData = new FormData();
+    RenderData.render();
+}
+const deleteData = (id) => {
+    const deleteData = new FormData();
+    deleteData.delete(id);
+}
+const editData = (id) => {
+    const editData = new FormData();
+    editData.edit(id);
+}
+const updateData = (id) => {
+    const CommonData = new CommonProp();
+    const name = CommonData.getEL('.fname').value;
+    const num = CommonData.getEL('.fnum').value;
+    const email = CommonData.getEL('.fmail').value;
+    const UpdateData = new FormData(name, num, email);
+    UpdateData.update(id);
+}
+
+getData();
+</script>
+</body>
+</html>
